@@ -43,6 +43,13 @@ ini_set('display_errors', 1);
             border-radius: 5px;
             cursor: pointer;
         }
+        a{
+            text-decoration:none;
+            color: #fff;
+        }
+        a:hover{
+            text-decoration:none;
+        }
         button:hover {
             background: #3a74d9;
         }
@@ -70,6 +77,8 @@ ini_set('display_errors', 1);
         <textarea name="query" rows="4" placeholder="Enter your SQL query here"></textarea>
         <br>
         <button type="submit">Run</button>
+        <button type="submit"><a href="./">Go To Home</a></button>
+
     </form>
 
 <?php
@@ -92,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $result = $conn->query($query);
 
-        if ($result === TRUE) {
+        if ($result === true) {
             echo "<p style='color:green;'>✅ Query executed successfully.</p>";
         } elseif ($result && $result->num_rows > 0) {
             echo "<table>";
@@ -102,13 +111,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             echo "</tr>";
 
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            foreach ($row as $col) {
-                echo "<td>" . htmlspecialchars($col) . "</td>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                foreach ($row as $col) {
+                    echo "<td>" . htmlspecialchars($col) . "</td>";
+                }
+                echo "</tr>";
             }
-            echo "</tr>";
-        }
             echo "</table>";
         } elseif ($result && $result->num_rows == 0) {
             echo "<p>0 rows returned.</p>";
