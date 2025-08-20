@@ -71,7 +71,7 @@ ini_set('display_errors', 1);
 <body>
 
 <div class="card">
-    <h2>Run SQL Query on hospital-management-system</h2>
+    <h2>Run SQL Query on Canteen_Management_System</h2>
 
     <form method="POST">
         <textarea name="query" rows="4" placeholder="Enter your SQL query here"></textarea>
